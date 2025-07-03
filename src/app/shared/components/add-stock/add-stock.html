@@ -1,0 +1,12 @@
+<button
+    class="bg-primary w-full lg:opacity-0 lg:invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 rounded-sm btn"
+    mat-flat-button (click)="addToCart($event, item)"
+    [disabled]="item.quantity === 0 || getQuantity(item) >= item.quantity">
+    @if(item.quantity === 0){
+    <span class="text-red-600">Out of Stock</span>
+    } @else if(getQuantity(item) >= item.quantity){
+    <span class="text-red-600">Out of Stock</span>
+    } @else {
+    Add to cart
+    }
+</button>

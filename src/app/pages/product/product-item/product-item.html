@@ -1,0 +1,53 @@
+<div
+  class="flex justify-center items-center mx-auto w-full px-6 md:px-28 lg:px-72 h-screen"
+>
+  <div
+    class="flex flex-col w-full bg-white shadow-xl rounded-xl overflow-hidden mt-6"
+  >
+    <span>
+      <img
+        class="w-full h-72 object-cover"
+        [src]="product?.image"
+        [alt]="product?.name"
+      />
+    </span>
+
+    <div class="flex flex-col p-4">
+      <span class="font-medium text-sm mb-1">{{ product?.name }}</span>
+      <span class="text-xl font-semibold mb-2">
+        {{ product?.price | currency : "EUR" }}
+      </span>
+
+      @if(product; as p) {
+      <span
+        class="text-xs font-medium mb-1"
+        [ngClass]="{
+          'text-green-600': p.quantity > 0,
+          'text-red-600': p.quantity === 0
+        }"
+      >
+        {{ p.quantity > 0 ? "In Stock" : "Out of Stock" }}
+      </span>
+
+      @if(p.quantity > 0) {
+      <span class="text-xs text-gray-500 mb-3">
+        Quantity Available: {{ p.quantity }}
+      </span>
+      } }
+
+      <span class="text-sm mb-6">
+        {{ product?.description }}
+      </span>
+      <div class="mt-auto">
+        <button
+          class="bg-primary w-full rounded-sm btn"
+          mat-flat-button
+          (click)="addToCart(product)"
+          [disabled]="product?.quantity === 0 || getQuantity(product!) >= product!.quantity"
+        >
+          Add to cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

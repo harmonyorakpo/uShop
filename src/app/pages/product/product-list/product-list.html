@@ -1,0 +1,71 @@
+@if((products$ | async); as items) {
+
+<div class="px-20 mb-64 h-screen">
+  <h1 class="text-2xl font-bold py-4">Product List</h1>
+
+  @if(items.products && items.products.length > 0) {
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    @for(item of items.products; track (item.id || $index)) {
+    <div
+      class="group flex flex-col bg-white hover:shadow-xl cursor-pointer overflow-hidden rounded-lg transition-all duration-300"
+      (click)="viewProduct(item)"
+    >
+      <span>
+        <img
+          class="w-full h-48 object-cover"
+          [src]="item.image"
+          [alt]="item.name || 'product image'"
+        />
+      </span>
+      <div class="flex flex-col p-4">
+        <span class="font-medium text-sm mb-1">{{ item.name }}</span>
+        <span class="text-xl font-semibold mb-2">
+          {{ item.price | currency : "EUR" }}
+        </span>
+
+        <span
+          class="text-xs font-medium mb-1"
+          [ngClass]="{
+            'text-red-600': item.quantity === 0
+          }"
+        >
+          {{ item.quantity < 0 ? "Out of Stock" : "" }}
+        </span>
+
+        <span class="text-sm mb-6">
+          {{ item.description | truncate : 50 }}
+        </span>
+        <div class="mt-auto">
+          <button
+            class="bg-primary w-full lg:opacity-0 lg:invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 rounded-sm btn"
+            mat-flat-button
+            (click)="addToCart($event, item)"
+            [disabled]="item.quantity === 0 || getQuantity(item) >= item.quantity"
+          >
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  } @else {
+  <div class="mt-auto mx-auto flex justify-center items-center">
+    <span class="mb-4">
+      <img
+        class="w-16 h-16"
+        src="assets/icons/empty-list.png"
+        alt="Empty list"
+      />
+    </span>
+    <span class="font-medium text-sm">No products returned</span>
+  </div>
+
+  }
+</div>
+} @else {
+
+<app-loader [info]="'Retrieving products'"></app-loader>
+
+}

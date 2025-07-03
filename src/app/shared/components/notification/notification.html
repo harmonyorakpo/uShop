@@ -1,0 +1,48 @@
+@if(showNotification){
+<div class="absolute top-4 right-4 z-50" [@slideInOut]>
+  <div
+    class="flex justify-between rounded-lg p-3"
+    [ngClass]="
+      type === 'success' ? 'bg-primary-bgSuccess' : 'bg-primary-bgError'
+    "
+  >
+    <div class="flex flex-row items-center mr-16">
+      <span
+        class="mr-2"
+        [ngClass]="
+          type === 'success'
+            ? 'text-primary-successIcon'
+            : 'text-primary-errorIcon'
+        "
+      >
+        <mat-icon>{{ type === "success" ? "check_circle" : "error" }}</mat-icon>
+      </span>
+
+      <div
+        class="flex flex-col"
+        [ngClass]="
+          type === 'success'
+            ? 'text-primary-successText'
+            : 'text-primary-errorText'
+        "
+      >
+        <span class="font-bold text-lg">{{ type | titlecase }}</span>
+        <span class="font-medium">{{ message }}</span>
+      </div>
+    </div>
+
+    <div class="flex items-center">
+      <button mat-icon-button (click)="onCancel()" aria-label="Cancel">
+        <mat-icon
+          [ngClass]="
+            type === 'success'
+              ? 'text-primary-successText'
+              : 'text-primary-errorText'
+          "
+          >clear</mat-icon
+        >
+      </button>
+    </div>
+  </div>
+</div>
+}
