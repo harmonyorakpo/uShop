@@ -17,7 +17,7 @@ import { NotificationService } from '@services/notification';
   imports: [MatIcon, CommonModule],
   templateUrl: './notification.html',
   styleUrl: './notification.scss',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  
   animations: [
     trigger('slideInOut', [
       transition(':enter', [

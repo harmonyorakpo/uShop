@@ -20,10 +20,10 @@ export const httpErrorInterceptor: HttpInterceptorFn = (
       let errorMessage = 'An unexpected error occurred';
 
       if (error.error instanceof ErrorEvent) {
-        // Client-side error
+        
         errorMessage = `Client error: ${error.error.message}`;
       } else {
-        // Server-side error
+        
         switch (error.status) {
           case 0:
             errorMessage =
@@ -50,7 +50,7 @@ export const httpErrorInterceptor: HttpInterceptorFn = (
         }
       }
 
-      // Call your custom notification component
+      
       notification.showNotification('error', errorMessage);
 
       return throwError(() => new Error(errorMessage));

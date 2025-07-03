@@ -10,7 +10,6 @@ import { finalize, Subject, takeUntil } from 'rxjs';
 import { Loader } from '../../../shared/components/loader/loader';
 import { NotificationService } from '@services/notification';
 
-
 @Component({
   selector: 'app-shopping-cart',
   imports: [
@@ -76,14 +75,12 @@ export class ShoppingCart implements OnDestroy {
   }
 
   checkout() {
- 
     this.loading = true;
     const payload = this.cartItems().map((item) => ({
       quantity: item.cartQuantity,
       product_id: item.id,
     }));
 
-    
     this.productService
       .checkoutitem(payload)
       .pipe(
@@ -102,12 +99,9 @@ export class ShoppingCart implements OnDestroy {
               'Purchase completed succesfully'
             );
           }
-       
         },
       });
   }
-
-
 
   ngOnDestroy(): void {
     this.destroy$.next();
