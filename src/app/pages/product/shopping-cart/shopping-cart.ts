@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Cart } from '@services/cart';
 import { Product } from '@services/product';
-import { finalize, Subject, takeUntil } from 'rxjs';
+import { catchError, finalize, Subject, takeUntil } from 'rxjs';
 import { Loader } from '../../../shared/components/loader/loader';
 import { NotificationService } from '@services/notification';
 
@@ -32,11 +32,12 @@ export class ShoppingCart implements OnDestroy {
   public currency!: ['USD', 'EUR', 'GBP'];
   private destroy$ = new Subject<void>();
   loading: boolean = false;
-
+  
   cartItems = this.cartService.items;
   totalItems = this.cartService.itemCount;
   totalPrice = this.cartService.totalPrice;
-
+  // max: number = this.cartService.items
+  
   removeItem(productId: number): void {
     this.cartService.removeFromCart(productId);
   }

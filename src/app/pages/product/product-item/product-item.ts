@@ -1,6 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButton } from '@angular/material/button';
+import { MatFormField } from '@angular/material/input';
 import { IProduct } from '@models/product.model';
 import { Cart } from '@services/cart';
 import { NotificationService } from '@services/notification';

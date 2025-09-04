@@ -9,5 +9,5 @@ import { Notification } from '@components//notification/notification';
   styleUrl: './app.scss'
 })
 export class App {
-  protected title = 'solankee-shopping-cart';
+  protected title = 'uShop';
 }

@@ -6,9 +6,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class NotificationService {
-  private showNotificationSubject = new BehaviorSubject<boolean>(false);
-  showNotification$: Observable<boolean> =
-    this.showNotificationSubject.asObservable();
+  // private showNotificationSubject = new BehaviorSubject<boolean>(false);
+  // showNotification$: Observable<boolean> =
+  //   this.showNotificationSubject.asObservable();
 
   public notificationSubject = new BehaviorSubject<NotificationData>({
     type: 'error',
@@ -16,10 +16,7 @@ export class NotificationService {
     show: false,
   });
 
-  showNotification(
-    type: 'success' | 'error',
-    message: string
-  ) {
+  showNotification(type: 'success' | 'error', message: string) {
     this.notificationSubject.next({ type, message, show: true });
   }
 

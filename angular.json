@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "solankee-shopping-cart": {
+    "uShop": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -66,10 +66,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "solankee-shopping-cart:build:production"
+              "buildTarget": "uShop:build:production"
             },
             "development": {
-              "buildTarget": "solankee-shopping-cart:build:development"
+              "buildTarget": "uShop:build:development"
             }
           },
           "defaultConfiguration": "development"

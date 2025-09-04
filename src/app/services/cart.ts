@@ -10,9 +10,11 @@ export class Cart {
   private cartItems = signal<CartItem[]>(this.loadFromStorage());
 
   public readonly items = this.cartItems.asReadonly();
+
   public readonly itemCount = computed(() =>
     this.cartItems().reduce((total, item) => total + item.cartQuantity, 0)
   );
+
   public readonly totalPrice = computed(() =>
     this.cartItems().reduce(
       (total, item) => total + item.price * item.cartQuantity,
@@ -67,6 +69,7 @@ export class Cart {
     );
     this.cartItems.set(updatedItems);
   }
+  
 
   clearCart(): void {
     this.cartItems.set([]);

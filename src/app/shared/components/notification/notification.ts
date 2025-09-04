@@ -17,7 +17,7 @@ import { NotificationService } from '@services/notification';
   imports: [MatIcon, CommonModule],
   templateUrl: './notification.html',
   styleUrl: './notification.scss',
-  
+
   animations: [
     trigger('slideInOut', [
       transition(':enter', [
@@ -37,7 +37,7 @@ import { NotificationService } from '@services/notification';
   ],
 })
 export class Notification implements OnInit, OnDestroy {
-  type: 'success' | 'error'  = 'error';
+  type: 'success' | 'error' = 'error';
   message: string = '';
   showNotification!: boolean;
 

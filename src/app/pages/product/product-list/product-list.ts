@@ -51,10 +51,9 @@ export class ProductList {
     this.cartService.addToCart(product, this.selectedQuantity);
     this.notificationService.showNotification(
       'success',
-      `${product.name}  added to cart`
+      `${product.name} added to cart`
     );
   }
-
 
   getQuantity(product: IProduct) {
     return this.cartService.getProductQuantityInCart(product.id) || 0;

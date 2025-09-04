@@ -1,0 +1,6 @@
+{
+  "BASE_URL": "https://g93902zutc.execute-api.eu-central-1.amazonaws.com",
+  "GET_PRODUCTS": "/prod/products",
+  "CHECKOUT_ITEM": "/prod/checkout"
+
+}

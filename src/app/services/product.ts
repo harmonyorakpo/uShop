@@ -1,23 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { CheckoutResponse, ProductResponse } from '@models/product.model';
+import { AppConfigService } from './app-config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Product {
   private http = inject(HttpClient);
+  private appConfig = inject(AppConfigService).appConfig;
 
   getproductList() {
     return this.http.get<ProductResponse>(
-      'https://g93902zutc.execute-api.eu-central-1.amazonaws.com/prod/products'
+
+      this.appConfig.BASE_URL + this.appConfig.GET_PRODUCTS
     );
   }
 
   checkoutitem(payload: any) {
     return this.http.post<CheckoutResponse>(
-      'https://g93902zutc.execute-api.eu-central-1.amazonaws.com/prod/checkout',
+      this.appConfig.BASE_URL + this.appConfig.CHECKOUT_ITEM,
       payload
     );
   }
 }
+
+

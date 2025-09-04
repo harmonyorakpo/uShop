@@ -43,7 +43,10 @@
           class="bg-primary w-full rounded-sm btn"
           mat-flat-button
           (click)="addToCart(product)"
-          [disabled]="product?.quantity === 0 || getQuantity(product!) >= product!.quantity"
+          [disabled]="
+            product?.quantity === 0 ||
+            getQuantity(product!) >= product!.quantity
+          "
         >
           Add to cart
         </button>
