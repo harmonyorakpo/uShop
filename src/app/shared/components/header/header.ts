@@ -16,7 +16,7 @@ export class Header {
   cartItemCount = this.cartService.itemCount;
 
   cartPage() {
-    this.router.navigate(['./cart'], { relativeTo: this.route });
+    this.router.navigate(['cart']);
   }
 
   homePage() {

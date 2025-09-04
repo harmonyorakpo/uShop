@@ -22,10 +22,7 @@ export const productRoutes: Routes = [
         path: 'product-list/:id',
         component: ProductItem,
       },
-      {
-        path: 'cart',
-        component: ShoppingCart,
-      },
+    
     ],
   },
 ];
